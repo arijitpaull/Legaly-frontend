@@ -24,8 +24,8 @@ export default function Home() {
     setInput('');
 
     try {
-      //const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-      const response = await axios.post("https://legaly-backend.onrender.com/chat", { prompt: input });
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+      const response = await axios.post(`${backendUrl}/chat`, { prompt: input });
       const botMessage = { role: 'assistant', content: response.data };
       setMessages([...messages, userMessage, botMessage]);
     } catch (error) {
